@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, ScrollView } from 'react-native';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 
@@ -57,7 +57,7 @@ function Register({navigation}) {
                 }}
             >
                 {({values, handleChange, handleSubmit, errors, setFieldTouched, touched}) => (
-                    <>
+                    <ScrollView>
                         <View style={styles.middle}>
                             <AppTextInput 
                                 name={"email"} 
@@ -126,7 +126,7 @@ function Register({navigation}) {
                                 fontStyle={styles.buttonText}
                                 onPress={() => navigation.navigate("Login")}/>
                         </View> 
-                    </>
+                    </ScrollView>
                 )}
                 
             </Formik>

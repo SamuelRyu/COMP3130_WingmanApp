@@ -61,6 +61,12 @@ function Travel({navigation}) {
         setNewLocations(sortedLocations)
     }
 
+    const performSearch = (text) => {
+        let searchedResults = locations.filter((item) => item.title.includes(text))
+        
+        setNewLocations(searchedResults)
+    }
+
     return (
         <Screen> 
             <FlatList
@@ -71,6 +77,7 @@ function Travel({navigation}) {
                                 placeholder={"Search"}
                                 name={"magnify"}
                                 size={30}
+                                onChangeText={text => performSearch(text)}
                             />
                         </View> 
                         <View style={styles.middle}>
@@ -113,12 +120,12 @@ function Travel({navigation}) {
                         source={item.image}
                         icon={item.icon}
                         title={item.title}
-                        onPress={() => navigation.navigate("MoreInformation", {
+                        onPress={() => {console.log(item); navigation.navigate("MoreInformation", {
                             screen: "MoreInformation",
                             params: {
                                 item: item
                             }
-                        })}
+                        })}}
                         onSwipeLeft={() => 
                             (<View style={styles.deleteContainer}>
                                 <TouchableOpacity style={styles.deleteButton} onPress = {() => deleteLocation(item)}>

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Assignment1",
-    "slug": "Assignment1",
+    "name": "45377553_wingman",
+    "slug": "45377553_wingman",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/icon.png",
@@ -27,6 +27,7 @@
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
-    }
+    },
+    "description": "Wingman Travel Companion is a travel app that allows you to find community managed travel locations and points of interests."
   }
 }
