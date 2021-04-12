@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { TouchableOpacity, StyleSheet, Modal, FlatList, Dimensions } from 'react-native';
 import {MaterialCommunityIcons} from '@expo/vector-icons'
-import Swipeable from 'react-native-gesture-handler/Swipeable'
 
 import theme from '../constants/theme'
 import AppText from './AppText';

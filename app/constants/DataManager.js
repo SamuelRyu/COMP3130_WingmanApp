@@ -15,29 +15,30 @@ export default class DataManager {
     locations = [
         {
             id: 0,
-            image: require("../assets/places/amsterdam.jpg"),
-            icon: "airplane",
-            category: "",
-            user: "user1",
-            title: "Amsterdam, Netherlands",
-            description: "A nice place to relax, I heard its really cool. Also TEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEST \n Yep done testing."
+            image: require("../assets/places/hawkerfare.jpg"),
+            icon: "food-fork-drink",
+            category: "Food",
+            user: 0,
+            title: "Hawker Fare",
+            description: "One of the most well known street food restuarants in Singapore. The Hiananese Chicken Rice is really good ",
         },
         {
             id: 1,
-            image: require("../assets/places/japan.jpg"),
-            icon: "airplane",
-            category: "",
-            user: "user1",
-            title: "Tokyo, Japan",
+            image: require("../assets/places/marinabaysands.jpg"),
+            icon: "bed",
+            category: "Places to Stay",
+            user: 0,
+            title: "Marina Bay Sands Hotel",
+            description: "Luxurious hotel that is home to the infinity pool, you can swim in the pool and relax while admiring the view of the urban landscape of Singapore.",
         },
         {
             id: 2,
-            image: require("../assets/places/newzealand.jpg"),
-            icon: "airplane",
-            category: "",
-            user: "user1",
-            title: "New Zealand",
-        },
+            image: require("../assets/places/merlion.jpg"),
+            icon: "hiking",
+            category: "Activities",
+            title: "Merlion",
+            description: "The Merlion statue is a historical representation of Singapore's origin.",
+        }
     ]
 
 

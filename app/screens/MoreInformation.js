@@ -9,7 +9,6 @@ import theme from '../constants/theme';
 
 function MoreInformation({navigation, route}) {
     const location = route.params.params.item;
-    console.log(location);
     return (
         <Screen>
             <ImageBackground source={location.image} style={styles.top}>

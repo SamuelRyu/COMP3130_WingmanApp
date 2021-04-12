@@ -14,14 +14,15 @@ import theme from '../constants/theme';
 const getLocations = () => {
     let commonData = DataManager.getInstance();
     let locations = commonData.getLocations();
-    return locations;
+
+    let userID = commonData.getUserID()
+
+    return locations.filter(item => item.userID == userID);
 }
     
 const getUserInfo = () => {
     let commonData = DataManager.getInstance();
     const userID = commonData.getUserID();
-
-    console.log(userID)
 
     return commonData.getUser(userID);
 };
@@ -29,16 +30,15 @@ const getUserInfo = () => {
 function Account({navigation}) {
     const user = getUserInfo();
     let userLetter = user.username.substring(0,1).toUpperCase();
+
     const locations = getLocations();
     const [refreshing, setRefreshing] = useState(false);
-    const [category, setCategory] = useState("");
-    const [sortMode, setSortMode] = useState("");
     const [newLocations, setNewLocations] = useState(locations);
 
     const deleteLocation = (location) => {
         setNewLocations(newLocations.filter(item => item.id !== location.id));
-        console.log(location.id)
     }
+
     return (
         <Screen> 
             <FlatList
@@ -55,9 +55,9 @@ function Account({navigation}) {
                                 onPress={() => navigation.navigate("Login")}/>
                         </View> 
                         <View style={styles.middle}>
-                            <AppButton title={"Saved Trips"} style={styles.trips}/>
+                            <AppButton title={"My Trips"} style={styles.trips}/>
                             <AppButton title={"Favourites"} style={styles.trips}/>
-                            <AppButton title={"Past Trips"} style={styles.trips}/>
+                            <AppPicker title={"Edit Profile"} style={styles.trips}/>
                         </View>
                         <AppText style={styles.tripText}>Saved Trips</AppText>
                     </>
@@ -143,6 +143,19 @@ const styles = StyleSheet.create({
         marginLeft: 40,
         fontWeight: 'bold'
     },
+    deleteContainer:{
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        marginRight: theme.sizes.margin
+    },
+    deleteButton: {
+        backgroundColor: theme.colors.secondary, 
+        width: 80, 
+        height: 80, 
+        borderRadius: 40, 
+        justifyContent: 'center', 
+        alignItems: 'center'
+    }
 })
 
 export default Account;

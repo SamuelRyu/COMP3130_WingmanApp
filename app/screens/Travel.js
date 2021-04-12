@@ -33,14 +33,32 @@ const getLocations = () => {
 
 function Travel({navigation}) {
     const locations = getLocations();
+
     const [refreshing, setRefreshing] = useState(false);
-    const [category, setCategory] = useState("");
-    const [sortMode, setSortMode] = useState("");
+    const [category, setCategory] = useState();
+    const [sortMode, setSortMode] = useState();
     const [newLocations, setNewLocations] = useState(locations);
 
     const deleteLocation = (location) => {
         setNewLocations(newLocations.filter(item => item.id !== location.id));
-        console.log(location.id)
+    }
+
+    const changeCategory = (category) => {
+        if(category.label === "All"){
+            setNewLocations(locations)
+        }else{
+            setNewLocations(locations.filter(item => item.category === category.label));
+        }
+    }
+
+    const sortLocations = (sortType) => {
+        let sortedLocations = []
+        if(sortType.label === "Ascending"){
+            sortedLocations = [].concat(newLocations).sort((a,b) => b.title - a.title ? -1 : 1);
+        }else{
+            sortedLocations = [].concat(newLocations).sort((a,b) => b.title - a.title ? 1 : -1);
+        }
+        setNewLocations(sortedLocations)
     }
 
     return (
@@ -63,7 +81,7 @@ function Travel({navigation}) {
                                 data={categories}
                                 numColumns={3}
                                 selectedItem={category}
-                                onSelectItem={item => setCategory(item)}
+                                onSelectItem={item =>  {setCategory(item), changeCategory(item)}}
                                 style={styles.trips}/>
                             <AppPicker icon={"sort"} 
                                 iconSize={20} 
@@ -72,7 +90,7 @@ function Travel({navigation}) {
                                 data={sorting}
                                 numColumns={2}
                                 selectedItem={sortMode}
-                                onSelectItem={item => setSortMode(item)}
+                                onSelectItem={item => {setSortMode(item), sortLocations(item)}}
                                 style={styles.trips}/>
                             <AppButton icon={"plus"}
                                 iconSize={20} 
