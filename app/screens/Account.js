@@ -57,7 +57,7 @@ function Account({navigation}) {
                         <View style={styles.middle}>
                             <AppButton title={"My Trips"} style={styles.trips}/>
                             <AppButton title={"Favourites"} style={styles.trips}/>
-                            <AppPicker title={"Edit Profile"} style={styles.trips}/>
+                            <AppButton title={"Edit Profile"} style={styles.trips}/>
                         </View>
                         <AppText style={styles.tripText}>Saved Trips</AppText>
                     </>
